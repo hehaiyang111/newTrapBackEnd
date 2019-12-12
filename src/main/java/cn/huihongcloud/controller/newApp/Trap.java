@@ -84,11 +84,7 @@ public class Trap {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         ParsePosition pos = new ParsePosition(0);
-
         String dateString = null;
-
-
-
         if(endDate!=null && endDate!="") {
             try {
                 Date currentTime_2 = formatter.parse(endDate, pos);
@@ -105,24 +101,23 @@ public class Trap {
             }
 
         }
-
-
-
         Page<Object> pageObject = PageHelper.startPage(page, limit);
         User user = userMapper.getUserByUserName(username);
         List<DeviceMaintenance> deviceMaintenanceList = null;
-        PageWrapper pageWrapper = new PageWrapper();
         System.out.println(startDate);
-
         if(user.getRole()==4){
             deviceMaintenanceList = deviceBeetleMapper.getFuckFuckByCustomProject(colName,searchText,user.getParent(),startDate,dateString);
         }else {
             deviceMaintenanceList = deviceBeetleMapper.getFuckFuck(colName,searchText,user.getAdcode(),startDate,dateString);
         }
-
+        PageWrapper pageWrapper = new PageWrapper();
         pageWrapper.setData(deviceMaintenanceList);
+        System.out.println(deviceMaintenanceList);
         pageWrapper.setCurrentPage(page);
-        pageWrapper.setTotalNum(pageObject.getTotal());
+        System.out.println(deviceMaintenanceList.size());
+        pageWrapper.setTotalNum(deviceMaintenanceList.size());
+//        System.out.println(deviceMaintenanceList.get(0).getCountId());
+//        System.out.println(pageObject.getTotal());
         pageWrapper.setTotalPage(pageObject.getPages());
         return pageWrapper;
 

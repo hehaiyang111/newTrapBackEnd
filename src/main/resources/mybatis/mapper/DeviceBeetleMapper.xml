@@ -163,7 +163,6 @@
         <if test="colName!=null and colName !='' and searchText!=null and searchText!=''">
             and t1.${colName} = #{searchText}
         </if>
-
     </select>
     <select id="getMedicineName" resultType="cn.huihongcloud.entity.MedicineName">
          select * from medicine_name  left join medicine_nameinfo_map  on medicine_name.id = medicine_nameinfo_map.id where adcode = #{adcode};

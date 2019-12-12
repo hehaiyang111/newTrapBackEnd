@@ -80,8 +80,17 @@ public class DeviceMaintenance {
     @Excel(name = "用户名")
     private String username;
 
+    public Integer getCountId() {
+        return countId;
+    }
+
+    public void setCountId(Integer countId) {
+        this.countId = countId;
+    }
+
     private String name;
 
+    private Integer countId;
 
     //    @Excel(name = "其他天牛种类")
     private Integer otherType;
